@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/WebProyecto/Usuarios?Tester" uri="xml-resources/web-service-references/Usuarios_Tester/wsdl/localhost_8080/WebProyecto/Usuarios.tester"/>
+    <system systemId="http://192.168.84.132:8084/Web_Proyecto_Tomcat/Usuarios?wsdl" uri="xml-resources/web-service-references/Usuarios/wsdl/192.168.84.132_8084/Web_Proyecto_Tomcat/Usuarios.wsdl"/>
+    <system systemId="http://192.168.84.132:8084/Web_Proyecto_Tomcat/Usuarios?xsd=1" uri="xml-resources/web-service-references/Usuarios/wsdl/192.168.84.132_8084/Web_Proyecto_Tomcat/Usuarios.xsd_1.xsd"/>
+</catalog>
