@@ -1,40 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://Servicio_Usuarios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://Servicio_Usuarios/">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://jaxb.dev.java.net/array">
 
-<xs:element name="InsertarUsuario" type="tns:InsertarUsuario" />
-
-<xs:element name="InsertarUsuarioResponse" type="tns:InsertarUsuarioResponse" />
-
-<xs:element name="loguearse" type="tns:loguearse" />
-
-<xs:element name="loguearseResponse" type="tns:loguearseResponse" />
-
-<xs:complexType name="loguearse">
+<xs:complexType name="stringArray" final="#all">
 <xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0" />
-<xs:element name="arg1" type="xs:string" minOccurs="0" />
+<xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded" nillable="true" />
 </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="loguearseResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="InsertarUsuario">
-<xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0" />
-<xs:element name="arg1" type="xs:string" minOccurs="0" />
-<xs:element name="arg2" type="xs:string" minOccurs="0" />
-<xs:element name="arg3" type="xs:string" minOccurs="0" />
-<xs:element name="arg4" type="xs:string" minOccurs="0" />
-<xs:element name="arg5" type="xs:string" minOccurs="0" />
-<xs:element name="arg6" type="xs:string" minOccurs="0" />
-<xs:element name="arg7" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="InsertarUsuarioResponse">
-<xs:sequence />
 </xs:complexType>
 </xs:schema>

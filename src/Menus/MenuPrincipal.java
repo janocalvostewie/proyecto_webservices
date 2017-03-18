@@ -5,6 +5,7 @@
  */
 package Menus;
 
+import static Menus.Tablas.rellenaUsuariosGeneral;
 import java.awt.CardLayout;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -22,23 +23,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
-        
-        //ocultar_inicio();
-        //this.setUndecorated(true);
-        this.setAlwaysOnTop(true);
-        //this.setExtendedState(MenuPrincipal.MAXIMIZED_BOTH);
-        //this.setResizable(false);
-        initComponents();
-       /* 
-        Toolkit tk= Toolkit.getDefaultToolkit();
-        int xsize=(int) tk.getScreenSize().getWidth();
-        int ysize=(int) tk.getScreenSize().getHeight();
-        this.setSize(xsize, ysize);
-        */
-        card = (CardLayout) pPrincipal.getLayout();
-       card.addLayoutComponent(pLogin, "pLogin");
-        card.addLayoutComponent(pApp, "pApp");
 
+        this.setAlwaysOnTop(true);
+        
+        initComponents();
+
+        card = (CardLayout) pPrincipal.getLayout();
+        card.addLayoutComponent(pLogin, "pLogin");
+        card.addLayoutComponent(pApp, "pApp");
+ModelosTablas.tablaConsultaGeneral();
     }
     public static int id_usuario;
     public static int id_na;
@@ -48,7 +41,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         //CardLayout card = (CardLayout) pPrincipal.getLayout();
         //card.first(pPrincipal);
-         card.show(pPrincipal, "pLogin");
+        card.show(pPrincipal, "pLogin");
 
     }
 
@@ -57,7 +50,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         card = (CardLayout) pPrincipal.getLayout();
         card.show(pPrincipal, "pApp");
         tpUsuarios.setVisible(false);
-       // card.last(pPrincipal);
+
     }
 
     /**
@@ -88,6 +81,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         bMenuClientes1 = new javax.swing.JButton();
         tpUsuarios = new javax.swing.JTabbedPane();
         pConsultaUsuarios = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtGeneralUsuarios = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtUsuariosCompras = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtUsuariosTiendas = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jtUsuariosVentas = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         pInsertaUsuarios = new javax.swing.JPanel();
         bCreaUsus = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -113,7 +118,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(pMiniLoginLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(pMiniLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(bEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addComponent(bEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                     .addComponent(tfPass)
                     .addComponent(tfUsuario))
                 .addGap(28, 28, 28))
@@ -212,7 +217,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(bMenuVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(44, 44, 44))
         );
         lpMenusLayout.setVerticalGroup(
             lpMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,18 +235,109 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pConsultaUsuarios.setBackground(new java.awt.Color(204, 204, 204));
 
+        jtGeneralUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jtGeneralUsuarios.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jtGeneralUsuarios);
+
+        jtUsuariosCompras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jtUsuariosCompras);
+
+        jtUsuariosTiendas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(jtUsuariosTiendas);
+
+        jtUsuariosVentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(jtUsuariosVentas);
+
+        jLabel1.setText("Trabajadores");
+
+        jLabel2.setText("Tiendas");
+
+        jLabel4.setText("Últimas Compras:");
+
+        jLabel5.setText("Últimas Ventas");
+
         javax.swing.GroupLayout pConsultaUsuariosLayout = new javax.swing.GroupLayout(pConsultaUsuarios);
         pConsultaUsuarios.setLayout(pConsultaUsuariosLayout);
         pConsultaUsuariosLayout.setHorizontalGroup(
             pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1068, Short.MAX_VALUE)
+            .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConsultaUsuariosLayout.createSequentialGroup()
+                        .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(650, 650, 650))
+                            .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConsultaUsuariosLayout.createSequentialGroup()
+                        .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(88, 88, 88)
+                        .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         pConsultaUsuariosLayout.setVerticalGroup(
             pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 463, Short.MAX_VALUE)
+            .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConsultaUsuariosLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConsultaUsuariosLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)))
+                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        tpUsuarios.addTab("tab1", pConsultaUsuarios);
+        tpUsuarios.addTab("Consulta Usuarios", pConsultaUsuarios);
 
         bCreaUsus.setText("jButton1");
         bCreaUsus.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +353,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(pInsertaUsuariosLayout.createSequentialGroup()
                 .addGap(307, 307, 307)
                 .addComponent(bCreaUsus)
-                .addContainerGap(688, Short.MAX_VALUE))
+                .addContainerGap(617, Short.MAX_VALUE))
         );
         pInsertaUsuariosLayout.setVerticalGroup(
             pInsertaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +369,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1068, Short.MAX_VALUE)
+            .addGap(0, 997, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,9 +402,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(pPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,24 +432,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
             mostrar_menus();
 
         }
-        System.out.println(vUsario[1] + "\n" + id_usuario + "\n" + id_na);
+
     }//GEN-LAST:event_bEntrarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-       ocultar_inicio();
+        ocultar_inicio();
     }//GEN-LAST:event_bSalirActionPerformed
 
     private void bCreaUsusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCreaUsusActionPerformed
-       insertarUsuario( "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "0", "M");
-        
+        // insertarUsuario( "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "PRUEBA", "0", "M");
+
     }//GEN-LAST:event_bCreaUsusActionPerformed
 
     private void bMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMenuUsuariosActionPerformed
-       
+
         tpUsuarios.setVisible(true);
-        
-        
-        
+        rellenaUsuariosGeneral();
+
+
     }//GEN-LAST:event_bMenuUsuariosActionPerformed
 
     /**
@@ -405,7 +499,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bSalir;
     protected static javax.swing.JLabel etiqNA;
     protected static javax.swing.JLabel etiqUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    public static javax.swing.JTable jtGeneralUsuarios;
+    public static javax.swing.JTable jtUsuariosCompras;
+    public static javax.swing.JTable jtUsuariosTiendas;
+    public static javax.swing.JTable jtUsuariosVentas;
     private static javax.swing.JLayeredPane lpMenus;
     private static javax.swing.JLayeredPane lpUsuario;
     private static javax.swing.JPanel pApp;
@@ -424,20 +530,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
         servicio_usuarios.Usuarios port = service.getUsuariosPort();
         return port.loguearse(arg0, arg1);
     }
-
-    private static void insertarUsuario(java.lang.String arg0, java.lang.String arg1, java.lang.String arg2, java.lang.String arg3, java.lang.String arg4, java.lang.String arg5, java.lang.String arg6, java.lang.String arg7) {
-        servicio_usuarios.Usuarios_Service service = new servicio_usuarios.Usuarios_Service();
-        servicio_usuarios.Usuarios port = service.getUsuariosPort();
-        port.insertarUsuario(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-    }
-
-   
-
-  
- 
-
- 
-
- 
 
 }

@@ -2,6 +2,7 @@
 package proyecto;
 
 import Menus.MenuPrincipal;
+import Menus.Tablas;
 
 /**
  *
@@ -13,6 +14,7 @@ public class Proyecto {
        
         MenuPrincipal ml1=new MenuPrincipal();
         ml1.setVisible(true);
+      
         
         
     }
