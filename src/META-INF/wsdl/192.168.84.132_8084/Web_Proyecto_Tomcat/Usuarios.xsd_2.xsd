@@ -10,6 +10,14 @@
 
 <xs:element name="InsertarUsuarioResponse" type="tns:InsertarUsuarioResponse" />
 
+<xs:element name="consultarUsuariosTiendas" type="tns:consultarUsuariosTiendas" />
+
+<xs:element name="consultarUsuariosTiendasResponse" type="tns:consultarUsuariosTiendasResponse" />
+
+<xs:element name="devuelveUsuarioLogueo" type="tns:devuelveUsuarioLogueo" />
+
+<xs:element name="devuelveUsuarioLogueoResponse" type="tns:devuelveUsuarioLogueoResponse" />
+
 <xs:element name="loguearse" type="tns:loguearse" />
 
 <xs:element name="loguearseResponse" type="tns:loguearseResponse" />
@@ -37,6 +45,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="devuelveUsuarioLogueo">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="devuelveUsuarioLogueoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="InsertarUsuario">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0" />
@@ -52,5 +72,17 @@
 
 <xs:complexType name="InsertarUsuarioResponse">
 <xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="consultarUsuariosTiendas">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarUsuariosTiendasResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:stringArray" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
 </xs:complexType>
 </xs:schema>

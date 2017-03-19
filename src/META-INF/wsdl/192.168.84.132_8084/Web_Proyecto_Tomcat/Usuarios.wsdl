@@ -7,11 +7,11 @@
 <xsd:import namespace="http://Servicio_Usuarios/" schemaLocation="http://192.168.84.132:8084/Web_Proyecto_Tomcat/Usuarios?xsd=2" />
 </xsd:schema>
 </types>
-<message name="ConsultarTrabajadores">
-<part name="parameters" element="tns:ConsultarTrabajadores" />
+<message name="loguearse">
+<part name="parameters" element="tns:loguearse" />
 </message>
-<message name="ConsultarTrabajadoresResponse">
-<part name="parameters" element="tns:ConsultarTrabajadoresResponse" />
+<message name="loguearseResponse">
+<part name="parameters" element="tns:loguearseResponse" />
 </message>
 <message name="InsertarUsuario">
 <part name="parameters" element="tns:InsertarUsuario" />
@@ -19,29 +19,49 @@
 <message name="InsertarUsuarioResponse">
 <part name="parameters" element="tns:InsertarUsuarioResponse" />
 </message>
-<message name="loguearse">
-<part name="parameters" element="tns:loguearse" />
+<message name="ConsultarTrabajadores">
+<part name="parameters" element="tns:ConsultarTrabajadores" />
 </message>
-<message name="loguearseResponse">
-<part name="parameters" element="tns:loguearseResponse" />
+<message name="ConsultarTrabajadoresResponse">
+<part name="parameters" element="tns:ConsultarTrabajadoresResponse" />
+</message>
+<message name="devuelveUsuarioLogueo">
+<part name="parameters" element="tns:devuelveUsuarioLogueo" />
+</message>
+<message name="devuelveUsuarioLogueoResponse">
+<part name="parameters" element="tns:devuelveUsuarioLogueoResponse" />
+</message>
+<message name="consultarUsuariosTiendas">
+<part name="parameters" element="tns:consultarUsuariosTiendas" />
+</message>
+<message name="consultarUsuariosTiendasResponse">
+<part name="parameters" element="tns:consultarUsuariosTiendasResponse" />
 </message>
 <portType name="Usuarios">
-<operation name="ConsultarTrabajadores">
-<input wsam:Action="http://Servicio_Usuarios/Usuarios/ConsultarTrabajadoresRequest" message="tns:ConsultarTrabajadores" />
-<output wsam:Action="http://Servicio_Usuarios/Usuarios/ConsultarTrabajadoresResponse" message="tns:ConsultarTrabajadoresResponse" />
+<operation name="loguearse">
+<input wsam:Action="http://Servicio_Usuarios/Usuarios/loguearseRequest" message="tns:loguearse" />
+<output wsam:Action="http://Servicio_Usuarios/Usuarios/loguearseResponse" message="tns:loguearseResponse" />
 </operation>
 <operation name="InsertarUsuario">
 <input wsam:Action="http://Servicio_Usuarios/Usuarios/InsertarUsuarioRequest" message="tns:InsertarUsuario" />
 <output wsam:Action="http://Servicio_Usuarios/Usuarios/InsertarUsuarioResponse" message="tns:InsertarUsuarioResponse" />
 </operation>
-<operation name="loguearse">
-<input wsam:Action="http://Servicio_Usuarios/Usuarios/loguearseRequest" message="tns:loguearse" />
-<output wsam:Action="http://Servicio_Usuarios/Usuarios/loguearseResponse" message="tns:loguearseResponse" />
+<operation name="ConsultarTrabajadores">
+<input wsam:Action="http://Servicio_Usuarios/Usuarios/ConsultarTrabajadoresRequest" message="tns:ConsultarTrabajadores" />
+<output wsam:Action="http://Servicio_Usuarios/Usuarios/ConsultarTrabajadoresResponse" message="tns:ConsultarTrabajadoresResponse" />
+</operation>
+<operation name="devuelveUsuarioLogueo">
+<input wsam:Action="http://Servicio_Usuarios/Usuarios/devuelveUsuarioLogueoRequest" message="tns:devuelveUsuarioLogueo" />
+<output wsam:Action="http://Servicio_Usuarios/Usuarios/devuelveUsuarioLogueoResponse" message="tns:devuelveUsuarioLogueoResponse" />
+</operation>
+<operation name="consultarUsuariosTiendas">
+<input wsam:Action="http://Servicio_Usuarios/Usuarios/consultarUsuariosTiendasRequest" message="tns:consultarUsuariosTiendas" />
+<output wsam:Action="http://Servicio_Usuarios/Usuarios/consultarUsuariosTiendasResponse" message="tns:consultarUsuariosTiendasResponse" />
 </operation>
 </portType>
 <binding name="UsuariosPortBinding" type="tns:Usuarios">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
-<operation name="ConsultarTrabajadores">
+<operation name="loguearse">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
@@ -59,7 +79,25 @@
 <soap:body use="literal" />
 </output>
 </operation>
-<operation name="loguearse">
+<operation name="ConsultarTrabajadores">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="devuelveUsuarioLogueo">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="consultarUsuariosTiendas">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
