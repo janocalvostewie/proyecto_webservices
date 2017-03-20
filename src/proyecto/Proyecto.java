@@ -2,7 +2,7 @@
 package proyecto;
 
 import Menus.MenuPrincipal;
-import Menus.Tablas;
+import Tablas.Tablas;
 
 /**
  *

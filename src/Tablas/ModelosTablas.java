@@ -1,5 +1,5 @@
 
-package Menus;
+package Tablas;
 
 
 import static Menus.MenuPrincipal.jtGeneralUsuarios;

@@ -5,12 +5,13 @@
  */
 package Menus;
 
+import Tablas.ModelosTablas;
+import Tablas.Tablas;
 import static Menus.Global.id_trabajador;
-import static Menus.Tablas.rellenaUsuariosGeneral;
+import static Tablas.Tablas.rellenaUsuariosGeneral;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
-import static javafx.application.Platform.exit;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,9 @@ import javax.swing.JOptionPane;
  * @author janillo
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+
+    public static CardLayout cartaInicio= (CardLayout)new CardLayout();;
+    public static CardLayout cartaMenus= (CardLayout)new CardLayout();;
 
     /**
      * Creates new form MenuPrincipal
@@ -28,30 +32,40 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         initComponents();
 
-        card = (CardLayout) pPrincipal.getLayout();
-        card.addLayoutComponent(pLogin, "pLogin");
-        card.addLayoutComponent(pApp, "pApp");
+        //Introducimos en los Layout los valores de los paneles
+        //cartaInicio = (CardLayout)new CardLayout();
+        cartaInicio.addLayoutComponent(pLogin, "pLogin");
+        cartaInicio.addLayoutComponent(pApp, "pApp");
+        pPrincipal.setLayout(cartaInicio);
+
+        //cartaMenus = (CardLayout) new CardLayout();
+        cartaMenus.addLayoutComponent(tpUsuarios, "tpUsuarios");
+        cartaMenus.addLayoutComponent(tpArticulos, "tpArticulos");
+        cartaMenus.addLayoutComponent(tpCompras, "tpCompras");
+        cartaMenus.addLayoutComponent(tpVentas, "tpVentas");
+        cartaMenus.addLayoutComponent(tpAjustes, "tpAjustes");
+        
+        pMenusillo.setLayout(cartaMenus);
+
         ModelosTablas.tablaConsultaGeneral();
         ModelosTablas.tablaUsuariosLogueo();
         ModelosTablas.tablaUsuariosTiendas();
 
     }
 
-    public static CardLayout card;
-
     public static void ocultar_inicio() {
 
         //CardLayout card = (CardLayout) pPrincipal.getLayout();
         //card.first(pPrincipal);
-        card.show(pPrincipal, "pLogin");
+        cartaInicio.show(pPrincipal, "pLogin");
 
     }
 
     public static void mostrar_menus() {
 
-        card = (CardLayout) pPrincipal.getLayout();
-        card.show(pPrincipal, "pApp");
-        tpUsuarios.setVisible(false);
+        //cartaInicio = (CardLayout) pPrincipal.getLayout();
+        cartaInicio.show(pPrincipal, "pApp");
+        pMenusillo.setVisible(false);
 
     }
 
@@ -64,6 +78,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         pPrincipal = new javax.swing.JPanel();
         pLogin = new javax.swing.JPanel();
         pMiniLogin = new javax.swing.JPanel();
@@ -74,6 +89,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lpUsuario = new javax.swing.JLayeredPane();
         etiqNA = new javax.swing.JLabel();
         etiqUsuario = new javax.swing.JLabel();
+        bFrances = new javax.swing.JButton();
+        bIngles = new javax.swing.JButton();
+        bEspanhol = new javax.swing.JButton();
         lpMenus = new javax.swing.JLayeredPane();
         bMenuCompras = new javax.swing.JButton();
         bMenuVentas = new javax.swing.JButton();
@@ -89,14 +107,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtGeneralUsuarios = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtUsuariosTiendas = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lTrabajadores = new javax.swing.JLabel();
+        lTiendas = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jtUsuariosAcceso = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        lUsuarioAcceso = new javax.swing.JLabel();
         pInsertaUsuarios = new javax.swing.JPanel();
         bCreaUsus = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        tpArticulos = new javax.swing.JTabbedPane();
+        pConsultasArticulos = new javax.swing.JPanel();
+        pStocks = new javax.swing.JPanel();
+        tpCompras = new javax.swing.JTabbedPane();
+        pRegistrarCompra = new javax.swing.JPanel();
+        tpVentas = new javax.swing.JTabbedPane();
+        pRegistrarVenta = new javax.swing.JPanel();
+        tpAjustes = new javax.swing.JTabbedPane();
+        pPreferencias = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROYECTO");
@@ -143,7 +181,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(pLoginLayout.createSequentialGroup()
                 .addGap(364, 364, 364)
                 .addComponent(pMiniLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         pLoginLayout.setVerticalGroup(
             pLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,8 +193,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pPrincipal.add(pLogin, "card5");
 
+        bFrances.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/france.png"))); // NOI18N
+        bFrances.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFrancesActionPerformed(evt);
+            }
+        });
+
+        bIngles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/UK.png"))); // NOI18N
+        bIngles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInglesActionPerformed(evt);
+            }
+        });
+
+        bEspanhol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/spain.png"))); // NOI18N
+        bEspanhol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEspanholActionPerformed(evt);
+            }
+        });
+
         lpUsuario.setLayer(etiqNA, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lpUsuario.setLayer(etiqUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lpUsuario.setLayer(bFrances, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lpUsuario.setLayer(bIngles, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        lpUsuario.setLayer(bEspanhol, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout lpUsuarioLayout = new javax.swing.GroupLayout(lpUsuario);
         lpUsuario.setLayout(lpUsuarioLayout);
@@ -167,7 +229,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(etiqUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(190, 190, 190)
                 .addComponent(etiqNA, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bEspanhol, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bIngles, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bFrances, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(214, 214, 214))
         );
         lpUsuarioLayout.setVerticalGroup(
             lpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +244,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(etiqUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
                     .addComponent(etiqNA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(lpUsuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(lpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bFrances, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bIngles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bEspanhol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
+
+        bMenuCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMenuComprasActionPerformed(evt);
+            }
+        });
 
         bMenuUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         bMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/user.png"))); // NOI18N
@@ -194,9 +274,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        bMenuArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMenuArticulosActionPerformed(evt);
+            }
+        });
+
+        bMenuClientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMenuClientes1ActionPerformed(evt);
+            }
+        });
+
         bMenuAjustes.setBackground(new java.awt.Color(255, 255, 255));
         bMenuAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/AJUSTES.png"))); // NOI18N
         bMenuAjustes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/AJUSTEShover.png"))); // NOI18N
+        bMenuAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bMenuAjustesActionPerformed(evt);
+            }
+        });
 
         lpMenus.setLayer(bMenuCompras, javax.swing.JLayeredPane.DEFAULT_LAYER);
         lpMenus.setLayer(bMenuVentas, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -223,9 +320,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(bMenuVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bMenuAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(267, 267, 267)
                 .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         lpMenusLayout.setVerticalGroup(
             lpMenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,9 +369,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jtUsuariosTiendas);
 
-        jLabel1.setText("Trabajadores");
+        lTrabajadores.setText("Trabajadores");
 
-        jLabel2.setText("Tiendas");
+        lTiendas.setText("Tiendas");
 
         jtUsuariosAcceso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -286,7 +383,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jtUsuariosAcceso);
 
-        jLabel3.setText("Usuario de Acceso");
+        lUsuarioAcceso.setText("Usuario de Acceso");
 
         javax.swing.GroupLayout pConsultaUsuariosLayout = new javax.swing.GroupLayout(pConsultaUsuarios);
         pConsultaUsuarios.setLayout(pConsultaUsuariosLayout);
@@ -296,41 +393,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
+                        .addComponent(lTrabajadores))
                     .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pConsultaUsuariosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 151, Short.MAX_VALUE))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addGap(46, 46, 46))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lUsuarioAcceso)
+                    .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lTiendas)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(31, 31, 31))
         );
         pConsultaUsuariosLayout.setVerticalGroup(
             pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(lTrabajadores))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConsultaUsuariosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lTiendas)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(pConsultaUsuariosLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addComponent(lUsuarioAcceso)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)))
                 .addGap(22, 22, 22))
         );
 
@@ -350,14 +444,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(pInsertaUsuariosLayout.createSequentialGroup()
                 .addGap(307, 307, 307)
                 .addComponent(bCreaUsus)
-                .addContainerGap(614, Short.MAX_VALUE))
+                .addContainerGap(516, Short.MAX_VALUE))
         );
         pInsertaUsuariosLayout.setVerticalGroup(
             pInsertaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pInsertaUsuariosLayout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addComponent(bCreaUsus)
-                .addContainerGap(376, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
 
         tpUsuarios.addTab("Creación de Usuarios", pInsertaUsuarios);
@@ -366,31 +460,105 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 994, Short.MAX_VALUE)
+            .addGap(0, 896, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 481, Short.MAX_VALUE)
         );
 
         tpUsuarios.addTab("tab3", jPanel3);
+
+        pMenusillo.add(tpUsuarios, "card2");
+
+        javax.swing.GroupLayout pConsultasArticulosLayout = new javax.swing.GroupLayout(pConsultasArticulos);
+        pConsultasArticulos.setLayout(pConsultasArticulosLayout);
+        pConsultasArticulosLayout.setHorizontalGroup(
+            pConsultasArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 896, Short.MAX_VALUE)
+        );
+        pConsultasArticulosLayout.setVerticalGroup(
+            pConsultasArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
+        );
+
+        tpArticulos.addTab("Consultas", pConsultasArticulos);
+
+        javax.swing.GroupLayout pStocksLayout = new javax.swing.GroupLayout(pStocks);
+        pStocks.setLayout(pStocksLayout);
+        pStocksLayout.setHorizontalGroup(
+            pStocksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 896, Short.MAX_VALUE)
+        );
+        pStocksLayout.setVerticalGroup(
+            pStocksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
+        );
+
+        tpArticulos.addTab("Stocks", pStocks);
+
+        pMenusillo.add(tpArticulos, "card3");
+
+        javax.swing.GroupLayout pRegistrarCompraLayout = new javax.swing.GroupLayout(pRegistrarCompra);
+        pRegistrarCompra.setLayout(pRegistrarCompraLayout);
+        pRegistrarCompraLayout.setHorizontalGroup(
+            pRegistrarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 896, Short.MAX_VALUE)
+        );
+        pRegistrarCompraLayout.setVerticalGroup(
+            pRegistrarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
+        );
+
+        tpCompras.addTab("Registrar Compra", pRegistrarCompra);
+
+        pMenusillo.add(tpCompras, "card4");
+
+        javax.swing.GroupLayout pRegistrarVentaLayout = new javax.swing.GroupLayout(pRegistrarVenta);
+        pRegistrarVenta.setLayout(pRegistrarVentaLayout);
+        pRegistrarVentaLayout.setHorizontalGroup(
+            pRegistrarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 896, Short.MAX_VALUE)
+        );
+        pRegistrarVentaLayout.setVerticalGroup(
+            pRegistrarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
+        );
+
+        tpVentas.addTab("Registar Venta", pRegistrarVenta);
+
+        pMenusillo.add(tpVentas, "card5");
+
+        javax.swing.GroupLayout pPreferenciasLayout = new javax.swing.GroupLayout(pPreferencias);
+        pPreferencias.setLayout(pPreferenciasLayout);
+        pPreferenciasLayout.setHorizontalGroup(
+            pPreferenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 896, Short.MAX_VALUE)
+        );
+        pPreferenciasLayout.setVerticalGroup(
+            pPreferenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
+        );
+
+        tpAjustes.addTab("Preferencias", pPreferencias);
+
+        pMenusillo.add(tpAjustes, "card6");
 
         javax.swing.GroupLayout pAppLayout = new javax.swing.GroupLayout(pApp);
         pApp.setLayout(pAppLayout);
         pAppLayout.setHorizontalGroup(
             pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAppLayout.createSequentialGroup()
-                .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lpUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pAppLayout.createSequentialGroup()
+                .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lpUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pAppLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lpMenus))
-                    .addGroup(pAppLayout.createSequentialGroup()
-                        .addComponent(tpUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(lpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pMenusillo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pAppLayout.createSequentialGroup()
+                    .addComponent(pMenusillo, javax.swing.GroupLayout.PREFERRED_SIZE, 901, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 5, Short.MAX_VALUE)))
         );
         pAppLayout.setVerticalGroup(
             pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,13 +566,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(lpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(tpUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(566, Short.MAX_VALUE))
             .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAppLayout.createSequentialGroup()
-                    .addContainerGap(162, Short.MAX_VALUE)
-                    .addComponent(pMenusillo, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(148, Short.MAX_VALUE)
+                    .addComponent(pMenusillo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(52, 52, 52)))
         );
 
@@ -456,7 +622,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void bMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMenuUsuariosActionPerformed
 
-        tpUsuarios.setVisible(true);
+        pMenusillo.setVisible(true);
+        cartaMenus.show(pMenusillo, "tpUsuarios");
         rellenaUsuariosGeneral();
 
 
@@ -472,6 +639,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jtGeneralUsuariosMouseClicked
+
+    private void bMenuArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMenuArticulosActionPerformed
+
+        pMenusillo.setVisible(true);
+        cartaMenus.show(pMenusillo, "tpArticulos");
+
+
+    }//GEN-LAST:event_bMenuArticulosActionPerformed
+
+    private void bMenuComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMenuComprasActionPerformed
+
+        pMenusillo.setVisible(true);
+        cartaMenus.show(pMenusillo, "tpCompras");
+
+
+    }//GEN-LAST:event_bMenuComprasActionPerformed
+
+    private void bMenuClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMenuClientes1ActionPerformed
+
+        pMenusillo.setVisible(true);
+        cartaMenus.show(pMenusillo, "tpVentas");
+
+
+    }//GEN-LAST:event_bMenuClientes1ActionPerformed
+
+    private void bMenuAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMenuAjustesActionPerformed
+
+        pMenusillo.setVisible(true);
+        cartaMenus.show(pMenusillo, "tpAjustes");
+
+
+    }//GEN-LAST:event_bMenuAjustesActionPerformed
+
+    private void bInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInglesActionPerformed
+        Idiomas.Ingles.cambiarAIngles();
+    }//GEN-LAST:event_bInglesActionPerformed
+
+    private void bFrancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFrancesActionPerformed
+        Idiomas.Frances.cambiarAFrances();
+    }//GEN-LAST:event_bFrancesActionPerformed
+
+    private void bEspanholActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEspanholActionPerformed
+      Idiomas.Espanhol.cambiarAEspanhol();
+    }//GEN-LAST:event_bEspanholActionPerformed
 
     /**
      * @param args the command line arguments
@@ -512,6 +723,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCreaUsus;
     private javax.swing.JButton bEntrar;
+    private javax.swing.JButton bEspanhol;
+    private javax.swing.JButton bFrances;
+    private javax.swing.JButton bIngles;
     private javax.swing.JButton bMenuAjustes;
     private javax.swing.JButton bMenuArticulos;
     private javax.swing.JButton bMenuClientes1;
@@ -521,9 +735,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bSalir;
     protected static javax.swing.JLabel etiqNA;
     protected static javax.swing.JLabel etiqUsuario;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -531,18 +743,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JTable jtGeneralUsuarios;
     public static javax.swing.JTable jtUsuariosAcceso;
     public static javax.swing.JTable jtUsuariosTiendas;
+    public static javax.swing.JLabel lTiendas;
+    public static javax.swing.JLabel lTrabajadores;
+    public static javax.swing.JLabel lUsuarioAcceso;
     private static javax.swing.JLayeredPane lpMenus;
     private static javax.swing.JLayeredPane lpUsuario;
     private static javax.swing.JPanel pApp;
-    private static javax.swing.JPanel pConsultaUsuarios;
-    private javax.swing.JPanel pInsertaUsuarios;
+    public static javax.swing.JPanel pConsultaUsuarios;
+    private javax.swing.JPanel pConsultasArticulos;
+    public static javax.swing.JPanel pInsertaUsuarios;
     private static javax.swing.JPanel pLogin;
-    private javax.swing.JPanel pMenusillo;
+    public static javax.swing.JPanel pMenusillo;
     private javax.swing.JPanel pMiniLogin;
+    private javax.swing.JPanel pPreferencias;
     private static javax.swing.JPanel pPrincipal;
+    private javax.swing.JPanel pRegistrarCompra;
+    private javax.swing.JPanel pRegistrarVenta;
+    private javax.swing.JPanel pStocks;
     private javax.swing.JTextField tfPass;
     private javax.swing.JTextField tfUsuario;
-    private static javax.swing.JTabbedPane tpUsuarios;
+    public static javax.swing.JTabbedPane tpAjustes;
+    public static javax.swing.JTabbedPane tpArticulos;
+    public static javax.swing.JTabbedPane tpCompras;
+    public static javax.swing.JTabbedPane tpUsuarios;
+    public static javax.swing.JTabbedPane tpVentas;
     // End of variables declaration//GEN-END:variables
 
     private static java.util.List<java.lang.String> loguearse(java.lang.String arg0, java.lang.String arg1) {

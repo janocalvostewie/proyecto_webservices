@@ -1,13 +1,14 @@
-package Menus;
+package Tablas;
 
-import static Menus.ModelosTablas.modGeneralUsuarios;
+import static Tablas.ModelosTablas.modGeneralUsuarios;
 import java.util.List;
 import static Menus.MenuPrincipal.jtGeneralUsuarios;
 import static Menus.MenuPrincipal.jtUsuariosAcceso;
 import static Menus.MenuPrincipal.jtUsuariosTiendas;
-import static Menus.ModelosTablas.modUsuariosLogueo;
-import static Menus.ModelosTablas.modUsuariosTiendas;
+import static Tablas.ModelosTablas.modUsuariosLogueo;
+import static Tablas.ModelosTablas.modUsuariosTiendas;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import net.java.dev.jaxb.array.StringArray;
 
@@ -19,6 +20,8 @@ public class Tablas {
 
     public static void rellenaUsuariosGeneral() {
 
+        eliminaFilas(jtGeneralUsuarios);
+
         String[] valores = new String[9];
 
         List<StringArray> lista = consultarTrabajadores();
@@ -29,10 +32,7 @@ public class Tablas {
 
     public static void rellenaTablaUsuariosLogueo(int idUsuario) {
 
-        while (jtUsuariosAcceso.getRowCount() > 0) {
-            ((DefaultTableModel) jtUsuariosAcceso.getModel()).removeRow(0);
-        }
-
+        eliminaFilas(jtUsuariosAcceso);
         List<String> valores = new ArrayList<>();
 
         String[] vUsario = new String[5];
@@ -44,9 +44,7 @@ public class Tablas {
 
     public static void rellenaTablaUsuariosTiendas(int idUsuario) {
 
-        while (jtUsuariosTiendas.getRowCount() > 0) {
-            ((DefaultTableModel) jtUsuariosTiendas.getModel()).removeRow(0);
-        }
+        eliminaFilas(jtUsuariosTiendas);
 
         List<StringArray> lista = consultarUsuariosTiendas(idUsuario);
         creaMatrizTabla(lista, modUsuariosTiendas);
@@ -55,8 +53,8 @@ public class Tablas {
     }
 
     /**
-     * *******************************CREACIÓN DE LA MATRIX DE DATOS
-     * DEVUELTOS**************************************
+     * ***************************CREACIÓN DE LA MATRIX DE DATOS
+     * DEVUELTOS********************
      */
     public static void creaMatrizTabla(List<StringArray> lista, DefaultTableModel modelo) {
 
@@ -74,6 +72,14 @@ public class Tablas {
 
         }
 
+    }
+
+    /////////////////////Elimina filas de tablas///////////////////////
+    public static void eliminaFilas(JTable tabla) {
+
+        while (tabla.getRowCount() > 0) {
+            ((DefaultTableModel) tabla.getModel()).removeRow(0);
+        }
     }
 
     /**
