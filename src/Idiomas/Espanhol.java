@@ -55,7 +55,7 @@ public class Espanhol {
         Menus.MenuPrincipal.lTrabajadores.setText("Empleado");
         Menus.MenuPrincipal.lTiendas.setText("Tiendas");
         Menus.MenuPrincipal.lUsuarioAcceso.setText("Usuario de Acceso");
-        
+        /////////////USUARIOS////////////////
         Menus.MenuPrincipal.lUsuApe1.setText("Apellido");
         Menus.MenuPrincipal.lUsuApe2.setText("Apellido");
         Menus.MenuPrincipal.lUsuDNI.setText("DNI");
@@ -66,6 +66,11 @@ public class Espanhol {
         Menus.MenuPrincipal.lUsuTelefono.setText("Teléfono");
         Menus.MenuPrincipal.lFoto.setText("Foto");
         Menus.MenuPrincipal.lUsuID.setText("ID");
+        ////////////////////ARTICULOS/////////////////////
+        Menus.MenuPrincipal.lArtConTabla.setText("Referencias");
+        Menus.MenuPrincipal.lArtReferencia.setText("Referencia");
+        Menus.MenuPrincipal.lArtCompras.setText("Compras");
+        Menus.MenuPrincipal.lArtVentas.setText("Ventas");
         
         }
 }

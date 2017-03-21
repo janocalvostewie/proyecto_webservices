@@ -64,5 +64,10 @@ public class Ingles {
         Menus.MenuPrincipal.lFoto.setText("Photo");
         Menus.MenuPrincipal.lUsuID.setText("ID");
         
+        
+        Menus.MenuPrincipal.lArtConTabla.setText("Articles");
+        Menus.MenuPrincipal.lArtReferencia.setText("Article");
+        Menus.MenuPrincipal.lArtCompras.setText("Purchases");
+        Menus.MenuPrincipal.lArtVentas.setText("Sales");
         }
 }

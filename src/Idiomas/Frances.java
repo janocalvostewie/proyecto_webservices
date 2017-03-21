@@ -62,5 +62,9 @@ public class Frances {
         Menus.MenuPrincipal.lFoto.setText("Photo");
         Menus.MenuPrincipal.lUsuID.setText("ID");
         
+        Menus.MenuPrincipal.lArtConTabla.setText("Article");
+        Menus.MenuPrincipal.lArtReferencia.setText("Articles");
+        Menus.MenuPrincipal.lArtCompras.setText("Achats");
+        Menus.MenuPrincipal.lArtVentas.setText("Ventes");
         }
 }
