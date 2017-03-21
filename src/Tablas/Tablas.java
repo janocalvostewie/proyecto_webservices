@@ -73,6 +73,13 @@ public class Tablas {
         }
 
     }
+    
+    
+    public static void tablaPruebas(){
+    
+        List lista=consultarTrabajadoresObjeto();
+        
+    }
 
     /////////////////////Elimina filas de tablas///////////////////////
     public static void eliminaFilas(JTable tabla) {
@@ -102,6 +109,12 @@ public class Tablas {
         servicio_usuarios.Usuarios_Service service = new servicio_usuarios.Usuarios_Service();
         servicio_usuarios.Usuarios port = service.getUsuariosPort();
         return port.devuelveUsuarioLogueo(arg0);
+    }
+
+    private static java.util.List<java.lang.Object> consultarTrabajadoresObjeto() {
+        servicio_usuarios.Usuarios_Service service = new servicio_usuarios.Usuarios_Service();
+        servicio_usuarios.Usuarios port = service.getUsuariosPort();
+        return port.consultarTrabajadoresObjeto();
     }
 
 }

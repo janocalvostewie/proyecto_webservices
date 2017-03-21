@@ -37,6 +37,12 @@
 <message name="consultarUsuariosTiendasResponse">
 <part name="parameters" element="tns:consultarUsuariosTiendasResponse" />
 </message>
+<message name="ConsultarTrabajadoresObjeto">
+<part name="parameters" element="tns:ConsultarTrabajadoresObjeto" />
+</message>
+<message name="ConsultarTrabajadoresObjetoResponse">
+<part name="parameters" element="tns:ConsultarTrabajadoresObjetoResponse" />
+</message>
 <portType name="Usuarios">
 <operation name="loguearse">
 <input wsam:Action="http://Servicio_Usuarios/Usuarios/loguearseRequest" message="tns:loguearse" />
@@ -57,6 +63,10 @@
 <operation name="consultarUsuariosTiendas">
 <input wsam:Action="http://Servicio_Usuarios/Usuarios/consultarUsuariosTiendasRequest" message="tns:consultarUsuariosTiendas" />
 <output wsam:Action="http://Servicio_Usuarios/Usuarios/consultarUsuariosTiendasResponse" message="tns:consultarUsuariosTiendasResponse" />
+</operation>
+<operation name="ConsultarTrabajadoresObjeto">
+<input wsam:Action="http://Servicio_Usuarios/Usuarios/ConsultarTrabajadoresObjetoRequest" message="tns:ConsultarTrabajadoresObjeto" />
+<output wsam:Action="http://Servicio_Usuarios/Usuarios/ConsultarTrabajadoresObjetoResponse" message="tns:ConsultarTrabajadoresObjetoResponse" />
 </operation>
 </portType>
 <binding name="UsuariosPortBinding" type="tns:Usuarios">
@@ -98,6 +108,15 @@
 </output>
 </operation>
 <operation name="consultarUsuariosTiendas">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="ConsultarTrabajadoresObjeto">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />

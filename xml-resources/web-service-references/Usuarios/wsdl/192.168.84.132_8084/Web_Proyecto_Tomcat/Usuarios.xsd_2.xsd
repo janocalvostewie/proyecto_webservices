@@ -4,6 +4,10 @@
 
 <xs:element name="ConsultarTrabajadores" type="tns:ConsultarTrabajadores" />
 
+<xs:element name="ConsultarTrabajadoresObjeto" type="tns:ConsultarTrabajadoresObjeto" />
+
+<xs:element name="ConsultarTrabajadoresObjetoResponse" type="tns:ConsultarTrabajadoresObjetoResponse" />
+
 <xs:element name="ConsultarTrabajadoresResponse" type="tns:ConsultarTrabajadoresResponse" />
 
 <xs:element name="InsertarUsuario" type="tns:InsertarUsuario" />
@@ -21,6 +25,16 @@
 <xs:element name="loguearse" type="tns:loguearse" />
 
 <xs:element name="loguearseResponse" type="tns:loguearseResponse" />
+
+<xs:complexType name="ConsultarTrabajadoresObjeto">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="ConsultarTrabajadoresObjetoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="loguearse">
 <xs:sequence>

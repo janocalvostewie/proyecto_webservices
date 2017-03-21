@@ -42,6 +42,7 @@ public class ModelosTablas extends DefaultTableModel{
         jtGeneralUsuarios.getColumnModel().getColumn(5).setMaxWidth(60);
         jtGeneralUsuarios.getColumnModel().getColumn(6).setMaxWidth(80);*/
      jtGeneralUsuarios.setModel(modGeneralUsuarios);
+     
 
     }
     
