@@ -8,6 +8,7 @@ package Menus;
 import Tablas.ModelosTablas;
 import Tablas.Tablas;
 import static Menus.Global.id_trabajador;
+import Tablas.Combos;
 import static Tablas.Tablas.rellenaUsuariosGeneral;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -159,6 +160,11 @@ Idiomas.Espanhol.cambiarAEspanhol();
         jtArtConsultas = new javax.swing.JTable();
         lArtVentas = new javax.swing.JLabel();
         lArtCompras = new javax.swing.JLabel();
+        lArtCate = new javax.swing.JLabel();
+        cbArtCate = new javax.swing.JComboBox<>();
+        lArtSubcate = new javax.swing.JLabel();
+        cbArtSubcate = new javax.swing.JComboBox<>();
+        bArtBuscar = new javax.swing.JButton();
         pStocks = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -753,20 +759,17 @@ Idiomas.Espanhol.cambiarAEspanhol();
 
         lArtCompras.setText("Compras");
 
+        lArtCate.setText("Categoría");
+
+        lArtSubcate.setText("Subcategoría");
+
         javax.swing.GroupLayout pConsultasArticulosLayout = new javax.swing.GroupLayout(pConsultasArticulos);
         pConsultasArticulos.setLayout(pConsultasArticulosLayout);
         pConsultasArticulosLayout.setHorizontalGroup(
             pConsultasArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pConsultasArticulosLayout.createSequentialGroup()
-                .addGroup(pConsultasArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pConsultasArticulosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 848, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pConsultasArticulosLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lArtReferencia)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfArtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 848, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConsultasArticulosLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
@@ -779,6 +782,22 @@ Idiomas.Espanhol.cambiarAEspanhol();
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
+            .addGroup(pConsultasArticulosLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lArtReferencia)
+                .addGap(18, 18, 18)
+                .addComponent(tfArtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(lArtCate)
+                .addGap(54, 54, 54)
+                .addComponent(cbArtCate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(lArtSubcate)
+                .addGap(51, 51, 51)
+                .addComponent(cbArtSubcate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bArtBuscar)
+                .addGap(95, 95, 95))
             .addGroup(pConsultasArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pConsultasArticulosLayout.createSequentialGroup()
                     .addGap(30, 30, 30)
@@ -788,11 +807,16 @@ Idiomas.Espanhol.cambiarAEspanhol();
         pConsultasArticulosLayout.setVerticalGroup(
             pConsultasArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pConsultasArticulosLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addGroup(pConsultasArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lArtReferencia)
-                    .addComponent(tfArtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
+                    .addComponent(tfArtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lArtCate)
+                    .addComponent(cbArtCate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lArtSubcate)
+                    .addComponent(cbArtSubcate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bArtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(lArtVentas)
@@ -802,7 +826,7 @@ Idiomas.Espanhol.cambiarAEspanhol();
                         .addComponent(lArtConTabla)
                         .addGap(154, 154, 154)
                         .addComponent(lArtCompras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))
                     .addGroup(pConsultasArticulosLayout.createSequentialGroup()
@@ -830,23 +854,19 @@ Idiomas.Espanhol.cambiarAEspanhol();
 
         tpArticulos.addTab("Stocks", pStocks);
 
+        pMenusillo.add(tpArticulos, "card6");
+
         javax.swing.GroupLayout pAppLayout = new javax.swing.GroupLayout(pApp);
         pApp.setLayout(pAppLayout);
         pAppLayout.setHorizontalGroup(
             pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAppLayout.createSequentialGroup()
-                .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pAppLayout.createSequentialGroup()
-                        .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lpUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pAppLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAppLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(tpArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lpUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pAppLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pAppLayout.createSequentialGroup()
                     .addComponent(pMenusillo, javax.swing.GroupLayout.PREFERRED_SIZE, 896, Short.MAX_VALUE)
@@ -858,9 +878,7 @@ Idiomas.Espanhol.cambiarAEspanhol();
                 .addComponent(lpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lpMenus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(tpArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(566, Short.MAX_VALUE))
             .addGroup(pAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAppLayout.createSequentialGroup()
                     .addGap(0, 185, Short.MAX_VALUE)
@@ -932,6 +950,7 @@ mostrar_menus();
 
         pMenusillo.setVisible(true);
         cartaMenus.show(pMenusillo, "tpArticulos");
+        Combos.comboArtCategorias();
 
 
     }//GEN-LAST:event_bMenuArticulosActionPerformed
@@ -1016,6 +1035,7 @@ mostrar_menus();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton bArtBuscar;
     private javax.swing.JButton bEntrar;
     public static javax.swing.JButton bEspanhol;
     public static javax.swing.JButton bFrances;
@@ -1030,6 +1050,8 @@ mostrar_menus();
     public static javax.swing.JButton bUsuActualizar;
     public static javax.swing.JButton bUsuConsultar;
     public static javax.swing.JButton bUsuLimpiar;
+    public static javax.swing.JComboBox<String> cbArtCate;
+    public static javax.swing.JComboBox<String> cbArtSubcate;
     protected static javax.swing.JLabel etiqNA;
     protected static javax.swing.JLabel etiqUsuario;
     private javax.swing.JPanel jPanel1;
@@ -1049,9 +1071,11 @@ mostrar_menus();
     public static javax.swing.JTable jtPruebas;
     public static javax.swing.JTable jtUsuariosAcceso;
     public static javax.swing.JTable jtUsuariosTiendas;
+    public static javax.swing.JLabel lArtCate;
     public static javax.swing.JLabel lArtCompras;
     public static javax.swing.JLabel lArtConTabla;
     public static javax.swing.JLabel lArtReferencia;
+    public static javax.swing.JLabel lArtSubcate;
     public static javax.swing.JLabel lArtVentas;
     public static javax.swing.JLabel lFoto;
     private javax.swing.JLabel lFotoIMG;
